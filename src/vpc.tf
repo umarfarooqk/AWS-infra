@@ -1,7 +1,7 @@
 # vpc.tf 
 # Create VPC/Subnet/Security Group/Network ACL
 provider "aws" {
-  version = "~> 3.0"
+  
   region     = var.region
 }
 # create the VPC
