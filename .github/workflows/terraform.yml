@@ -12,7 +12,7 @@ jobs:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
     defaults:
       run:
-        working-directory: ./
+        working-directory: src
     steps:
       - name: Checkout
         uses: actions/checkout@v2
