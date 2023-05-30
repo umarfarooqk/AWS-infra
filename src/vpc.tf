@@ -2,8 +2,8 @@
 # Create VPC/Subnet/Security Group/Network ACL
 provider "aws" {
   version = "~> 3.0"
-  access_key = ${{ secrets.ACCESS_KEY }} 
-  secret_key = ${{ secrets.SECRET_KEY }}
+  access_key = var.access_key 
+  secret_key = var.secret_key
   region     = var.region
 }
 # create the VPC
