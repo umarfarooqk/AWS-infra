@@ -1,5 +1,14 @@
 # vpc.tf 
 # Create VPC/Subnet/Security Group/Network ACL
+
+terraform {
+  backend "s3" {
+    bucket = "terraform-aws-umar"
+	key = "key/terraform.tfstate"
+	region = "us-east-1"
+	}
+}
+
 provider "aws" {
   
   region     = var.region
