@@ -7,30 +7,26 @@ jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-    defaults:
-      run:
-        working-directory: src
-    steps:
+    
+    steps:    
+      
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: actions/checkout@v3
+        
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          terraform_version: 1.3.9
-          terraform_wrapper: false
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.ECRET_KEY }}
+          
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
 
-
-      - name: Terraform Init
-        id: init
-        run: terraform init
-
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      - name: Terraform run
+        id: apply
+        run:
+          cd src/
+          terraform init
+          terraform validate
+          terraform plan
+          terraform apply -auto-approve
