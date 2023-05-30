@@ -115,7 +115,7 @@ resource "aws_key_pair" "ec2-keys" {
 }
 
 resource "aws_instance" "web01" {
-  ami = "ami-0889a44b331db0194"
+  ami = "ami-0715c1897453cabd1"
   key_name = aws_key_pair.ec2-keys.key_name
   instance_type = "t2.micro"
   subnet_id = aws_subnet.My_VPC_Subnet.id
