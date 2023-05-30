@@ -25,7 +25,7 @@ jobs:
 
       - name: Terraform run
         id: apply
-        run:
+        run: |
           cd src/
           terraform init
           terraform validate
