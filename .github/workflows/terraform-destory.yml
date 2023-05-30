@@ -28,4 +28,5 @@ jobs:
         run: |
           cd src/
           terraform init
+          terraform state pull
           terraform destroy -auto-approve
